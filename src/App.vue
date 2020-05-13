@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<div>
+  <h1>My Shopping List</h1>
+  <ul>
+  <shopping-list-item v-for="(item, index) in items" :key="index" :item="item"></shopping-list-item>
+  </ul>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ShoppingListItem from "./components/ShoppingListItem";
 
 export default {
-  name: 'App',
+  name: "app",
+  data() {
+    return {
+      items: [
+        { name: "Milk", isPurchased: false },
+        { name: "Cheese", isPurchased: true },
+        { name: "Beans", isPurchased: false }
+      ]
+    };
+  },
   components: {
-    HelloWorld
+    "shopping-list-item": ShoppingListItem
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
